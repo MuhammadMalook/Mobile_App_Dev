@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TMNT-app</string>
+    <array name="turtule">
+        <item name="jennika">jennika</item>
+        <item name="raphael">raphael</item>
+        <item name="donatello">donatello</item>
+        <item name="leonardo">leonardo</item>
+    </array>
+</resources>

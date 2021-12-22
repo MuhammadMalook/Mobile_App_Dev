@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#573939"
+    android:orientation="vertical"
+    android:paddingTop="50dp"
+    tools:context=".NameScreen">
+
+    <EditText
+        android:id="@+id/player1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#DCC7C7"
+        android:backgroundTint="#F1F4F4"
+        android:ems="10"
+        android:hint="Player 1"
+        android:inputType="textPersonName"
+        android:padding="20dp" />
+
+    <EditText
+        android:id="@+id/player2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#DCC7C7"
+        android:backgroundTint="#F1F4F4"
+        android:ems="10"
+        android:hint="Player 2"
+        android:inputType="textPersonName"
+        android:padding="20dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:onClick="onPlay"
+        android:padding="20dp"
+        android:text="Play"
+        android:textSize="20dp" />
+
+
+</LinearLayout>
