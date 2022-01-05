@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    BroadCast broadCast = new BroadCast();
+    BroadCastReceiver broadCast = new BroadCastReceiver();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

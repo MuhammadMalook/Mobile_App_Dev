@@ -6,8 +6,7 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.widget.Toast;
 
-public class BroadCast extends BroadcastReceiver {
-    @Override
+public class BroadCastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (isAirplaneModeOn(context.getApplicationContext())) {
             Toast.makeText(context, "AirPlane mode is on", Toast.LENGTH_SHORT).show();
