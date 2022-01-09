@@ -35,7 +35,7 @@ public class playerService extends Service {
     boolean isPlaying = false;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        showNotifocation();
+        //showNotifocation();
 
         player = MediaPlayer.create(getApplicationContext(),songs[songPosition]);
         player.start();
@@ -56,14 +56,16 @@ public class playerService extends Service {
    public void playSong()
    {
        if(songPosition<songs.length-1){
+
            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                @Override
                public void onCompletion(MediaPlayer mp) {
                    isPlaying = false;
                    songPosition++;
-
+                   player.release();
                    player = MediaPlayer.create(getApplicationContext(), songs[songPosition]);
                    player.start();
+
                    Notification builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                            .setContentTitle(getResources().getResourceEntryName(songs[songPosition]))
                            .setAutoCancel(false)
@@ -85,34 +87,34 @@ public class playerService extends Service {
 
 
 
-    public void showNotifocation()
-    {
-        //NotificationChannel notificationChannel = new NotificationChannel("channelid","Forground Service",NotificationManager.IMPORTANCE_DEFAULT);
-        NotificationManager manager = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            manager = (NotificationManager) getSystemService(NotificationManager.class);
-        }
+//    public void showNotifocation()
+//    {
+//        //NotificationChannel notificationChannel = new NotificationChannel("channelid","Forground Service",NotificationManager.IMPORTANCE_DEFAULT);
+//        NotificationManager manager = null;
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//            manager = (NotificationManager) getSystemService(NotificationManager.class);
+//        }
+//
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//            NotificationChannel notificationChannel =
+//                    new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+//
+//            manager.createNotificationChannel(notificationChannel);
+//        }
+//        //Step 4 - Notify the user, using the notification manager
+//        //manager.notify(1234, notification);
+//    }
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel =
-                    new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
-
-            manager.createNotificationChannel(notificationChannel);
-        }
-        //Step 4 - Notify the user, using the notification manager
-        //manager.notify(1234, notification);
-    }
-
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         stopForeground(false);
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 }

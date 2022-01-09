@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     0);
         }
 
+
         setAlarm(calendar.getTimeInMillis());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Toast.makeText(this, "Alarm is set to "+time.getHour()+" : "+time.getMinute(), Toast.LENGTH_SHORT).show();
@@ -63,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent myReciverintent = new Intent(this,MyReciever.class);
         PendingIntent intent = PendingIntent.getBroadcast(this, 1234, myReciverintent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP,timeInMillis,intent);
+        manager.setExact(AlarmManager.RTC_WAKEUP,timeInMillis,intent);
+
+//        manager.setExact();
 
     }
 

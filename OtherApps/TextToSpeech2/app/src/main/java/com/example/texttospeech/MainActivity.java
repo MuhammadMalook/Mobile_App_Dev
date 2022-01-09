@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,10 +20,12 @@ public class MainActivity extends AppCompatActivity {
 
     TextToSpeech ttx;
     Boolean isReady = false;
+    EditText text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        text = findViewById(R.id.editTextTextPersonName);
         ttx = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -52,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onSpeak(View view)
     {
+
+        Speak(text.getText().toString());
     }
     public void Speak(String text)
     {

@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView txt;
@@ -18,6 +21,31 @@ public class MainActivity extends AppCompatActivity {
     }
     public void newThread(View view)
     {
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        executorService.execute(new Runnable() {
+            public void run() {
+                System.out.println("Asynchronous task");
+            }
+        });
+        executorService.execute(new Runnable() {
+            public void run() {
+                System.out.println("Asynchronous task2");
+            }
+        });
+        executorService.execute(new Runnable() {
+            public void run() {
+                System.out.println("Asynchronous task3");
+            }
+        });
+        executorService.execute(new Runnable() {
+        public void run() {
+            System.out.println("Asynchronous task4");
+        }
+    });
+
+        executorService.shutdown();
+
+
 //        Thread t = new Thread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -56,12 +84,12 @@ public class MainActivity extends AppCompatActivity {
 //        t.start();
 
 
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                    x+=10;
-                    txt.setText("value of x is "+x);
-            }
-        });
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                    x+=10;
+//            }
+//        });
+//        txt.setText("value of x is "+x);
    }
 }

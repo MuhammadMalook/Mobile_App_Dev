@@ -19,7 +19,6 @@ import androidx.core.app.NotificationCompat;
 import java.util.Date;
 
 public class MyReciever extends BroadcastReceiver {
-    Button btn;
     @Override
     public void onReceive(Context context, Intent intent1) {
         Toast.makeText(context.getApplicationContext(), "Alaram started", Toast.LENGTH_SHORT).show();
